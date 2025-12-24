@@ -121,6 +121,14 @@ config CPU_FREQ_DEFAULT_GOV_ENERGYSTEP
 	  have a look at the help section of that governor. The fallback
 	  governor will be 'performance'.
 
+config CPU_FREQ_DEFAULT_GOV_ACACIA
+	bool "acacia"
+	select CPU_FREQ_GOV_ACACIA
+	help
+	  Use the CPUFreq governor 'acacia' as default. This sets
+	  the frequency statically to the highest frequency supported by
+	  the CPU for maximum performance.
+
 endchoice
 
 config CPU_FREQ_GOV_PERFORMANCE
@@ -229,6 +237,13 @@ config CPU_FREQ_GOV_ENERGYSTEP
 
 	  If in doubt, say N.
 
+config CPU_FREQ_GOV_ACACIA
+	tristate "'acacia' governor"
+	help
+	  This cpufreq governor sets the frequency statically to the
+	  highest available CPU frequency for maximum performance.
+
+	  If in doubt, say Y.
 
 comment "CPU frequency scaling drivers"
 
