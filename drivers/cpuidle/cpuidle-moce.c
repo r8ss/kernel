@@ -370,6 +370,7 @@ static struct factor *__init init_factor_data(struct device_node *factor_node, i
 	struct bias_cpuidle *bias_first;
 	struct factor *factor, *first;
 	const char *buf;
+	u32 type_val;
 
 	/* alloc factor */
 	factor = kzalloc(sizeof(struct factor), GFP_KERNEL);
@@ -385,8 +386,9 @@ static struct factor *__init init_factor_data(struct device_node *factor_node, i
 		goto moce_fail;
 
 	/* factor type */
-	if (of_property_read_u32(factor_node, "type", &factor->type))
+	if (of_property_read_u32(factor_node, "type", &type_val))
 		goto moce_fail;
+	factor->type = (factor_type)type_val;
 
 	/* factor ratio-table */
 	factor->size = of_property_count_u32_elems(factor_node, "ratio-table");
