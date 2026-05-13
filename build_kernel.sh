@@ -7,6 +7,7 @@ export PATH="$SCRIPT_DIR/toolchain/clang-r416183b/bin:${PATH}"
 export LLVM=1
 export LLVM_IAS=1
 export CROSS_COMPILE=aarch64-linux-gnu-
+export CROSS_COMPILE_ARM32=arm-linux-gnueabi-
 
 scripts/kconfig/merge_config.sh -m -O . arch/arm64/configs/exynos9830_defconfig arch/arm64/configs/r8s.config arch/arm64/configs/ksu.config
 make KCONFIG_ALLCONFIG=.config alldefconfig
